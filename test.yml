@@ -1,0 +1,25 @@
+- hosts: frontend
+  become: yes
+  become_user: frontend1
+  tasks: 
+   - name: docker down
+     command: docker-compose down
+     args:
+      chdir: ~/literature-frontend
+#   - name: docker rmi
+ #    command: docker rmi ggenom3/frontend
+   - name: pull
+     git:
+      repo: git@github.com:GGenom3/literature-frontend.git
+      version: deploy
+      update: yes
+      dest: ~/literature-frontend
+      remote: frontend
+   - name: docker build
+     command: docker build -t ggenom3/frontend .
+     args:
+      chdir: ~/literature-frontend
+   - name: docker up
+     command: docker-compose up -d
+     args:
+      chdir: ~/literature-frontend

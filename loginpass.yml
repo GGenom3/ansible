@@ -1,0 +1,7 @@
+- hosts: all
+  tasks:
+   - name: change PasswordAuth
+     replace:
+      path: /etc/ssh/sshd_config
+      regexp: 'PasswordAuthentication no'
+      replace: "PasswordAuthentication yes"

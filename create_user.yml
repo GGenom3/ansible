@@ -1,0 +1,62 @@
+- hosts: frontend
+  become: yes
+  become_user: root
+  vars:
+   #created with:
+   #python -c 'import crypt; print crypt.crypt("insert password here", "$1$ansible$")'
+   #and copy below
+   password: $1$ansible$rXP7pTrCReWNJdEcxMaMl/
+  tasks:
+   - name: Creat frontend user
+     user:
+       name: frontend
+       password: "{{password}}"
+       groups: sudo,docker
+
+- hosts: backend
+  become: yes
+  become_user: root
+  vars:
+   password: $1$ansible$rXP7pTrCReWNJdEcxMaMl/
+  tasks:
+   - name: Creat backend user
+     user:
+       name: backend
+       password: "{{password}}"
+       groups: sudo,docker
+
+- hosts: jenkins
+  become: yes
+  become_user: root
+  vars:
+   password: $1$ansible$rXP7pTrCReWNJdEcxMaMl/
+  tasks:
+   - name: Creat jenkins user
+     user:
+       name: jenkins
+       password: "{{password}}"
+       groups: sudo,docker
+
+- hosts: monitoring
+  become: yes
+  become_user: root
+  vars:
+   password: $1$ansible$rXP7pTrCReWNJdEcxMaMl/
+  tasks:
+   - name: Creat monitoring user
+     user:
+       name: monitoring
+       password: "{{password}}"
+       groups: sudo,docker
+
+- hosts: db
+  become: yes
+  become_user: root
+  vars:
+   password: $1$ansible$rXP7pTrCReWNJdEcxMaMl/
+  tasks:
+   - name: Creat db user
+     user:
+       name: db
+       password: "{{password}}"
+       groups: sudo,docker

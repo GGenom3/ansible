@@ -1,0 +1,17 @@
+[frontend]
+172.70.18.146 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3 ansible_become_password=sandi
+#172.70.27.57 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3 
+
+[backend]
+172.70.25.73 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3
+172.70.30.100 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3
+
+[jenkins]
+172.70.26.91 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3 ansible_become_password=sandi
+
+[monitoring]
+172.70.21.25 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3
+
+[db]
+172.70.27.110 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3
+172.70.27.171 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3

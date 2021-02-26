@@ -1,0 +1,19 @@
+- hosts: backend
+  become: yes
+  become_user: backend
+  tasks:
+   - name: clone
+     git:
+      repo: git@github.com:GGenom3/Backend.git
+      version: master
+      dest: ~/Backend
+
+- hosts: frontend
+  become: yes
+  become_user: frontend
+  tasks:
+   - name: clone
+     git:
+      repo: git@github.com:GGenom3/literature-frontend.git
+      version: deploy
+      dest: ~/literature-frontend

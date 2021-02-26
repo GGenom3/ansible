@@ -1,0 +1,35 @@
+- hosts: frontend
+  become: yes
+  become_user: frontend
+  tasks:
+   - name: deploy docker compose
+     command: docker-compose up -d
+     args:
+      chdir: ~/literature-frontend
+
+- hosts: backend
+  become: yes
+  become_user: backend
+  tasks:
+   - name: deploy docker compose
+     command: docker-compose up -d
+     args:
+      chdir: ~/Backend
+
+- hosts: jenkins
+  become: yes
+  become_user: jenkins
+  tasks:
+   - name: deploy docker compose
+     command: docker-compose up -d
+     args:
+      chdir: ~/
+
+- hosts: monitoring
+  become: yes
+  become_user: monitoring
+  tasks:
+   - name: deploy docker compose
+     command: docker-compose up -d
+     args:
+      chdir: ~/
